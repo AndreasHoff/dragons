@@ -1,4 +1,4 @@
-Liste over alle drager hvor der kan søges på hver drage
+ Liste over alle drager hvor der kan søges på hver drage
 bagefter tilføje deres stats fisk, iron, træ og samle tid til deres card
 
 hver drage skal ha et card som består af:
@@ -18,16 +18,16 @@ dragons = [
    {
 	id: 1,
 	name: 'scardian',
-	wood: '20,000.300',
 	fish: '20,000.300',
+	wood: '20,000.300',
 	iron: '1,423',
 	gatheringTime: '1d12h',
    },
    {
 	id: 2,
 	name: 'gruff',
-	wood: '11,000.300',
-	fish: '26,000.300',
+	fish: '11,000.300',
+	wood: '26,000.300',
 	iron: 'cannot collect',
 	gatheringTime: '7h30m',
    },
