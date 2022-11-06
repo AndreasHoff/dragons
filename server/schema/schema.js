@@ -41,6 +41,7 @@ const RootQuery = new GraphQLObjectType({
 const mutation = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
+        // Add Dragon
         addDragon: {
             type: DragonType,
             args: { 
@@ -60,6 +61,43 @@ const mutation = new GraphQLObjectType({
                 });
 
                 return dragon.save();
+            },
+        },
+        // Delete Dragon
+        deleteDragon: {
+            type: DragonType,
+            args: {
+                id: { type: GraphQLNonNull(GraphQLID) }
+            },
+            resolve(parent, args) {
+                return Dragon.findByIdAndRemove(args.id);
+            }
+        },
+        // Update a dragon
+        updateDragon: {
+            type: DragonType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLID) },
+                name: { type: GraphQLString },
+                fish: { type: GraphQLString },
+                wood: { type: GraphQLString },
+                iron: { type: GraphQLString },
+                gatheringTime: { type: GraphQLString },
+            },
+            resolve(parent, args) {
+                return Dragon.findByIdAndUpdate(
+                    args.id,
+                    {
+                        $set: {
+                            name: args.name,
+                            fish: args.fish,
+                            wood: args.wood,
+                            iron: args.iron,
+                            gatheringTime: args.gatheringTime,
+                        }
+                    },
+                    { new: true}
+                );
             }
         }
     }     
